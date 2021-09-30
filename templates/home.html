@@ -1,0 +1,189 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;1,300&display=swap');
+
+        .back-style {
+            /*
+            Background taken from https://www.svgbackgrounds.com/
+            */
+            background-color: #ffffff;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' x2='0' y1='1' y2='0' gradientTransform='rotate(99,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%230FF'/%3E%3Cstop offset='1' stop-color='%23CF6'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' x2='0' y1='0' y2='1' gradientTransform='rotate(87,0.5,0.5)'%3E%3Cstop offset='0' stop-color='%23F00'/%3E%3Cstop offset='1' stop-color='%23FC0'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23FFF' fill-opacity='0' stroke-miterlimit='10'%3E%3Cg stroke='url(%23a)' stroke-width='3.3'%3E%3Cpath transform='translate(-17.5 4) rotate(2.5 1409 581) scale(1.01)' d='M1409 581 1450.35 511 1490 581z'/%3E%3Ccircle stroke-width='1.1' transform='translate(-10 10) rotate(3 800 450) scale(1.005)' cx='500' cy='100' r='40'/%3E%3Cpath transform='translate(9 -30) rotate(30 401 736) scale(1.005)' d='M400.86 735.5h-83.73c0-23.12 18.74-41.87 41.87-41.87S400.86 712.38 400.86 735.5z'/%3E%3C/g%3E%3Cg stroke='url(%23b)' stroke-width='1'%3E%3Cpath transform='translate(60 -4) rotate(1 150 345) scale(0.99)' d='M149.8 345.2 118.4 389.8 149.8 434.4 181.2 389.8z'/%3E%3Crect stroke-width='2.2' transform='translate(-40 -25) rotate(36 1089 759)' x='1039' y='709' width='100' height='100'/%3E%3Cpath transform='translate(-60 20) rotate(6 1400 132)' d='M1426.8 132.4 1405.7 168.8 1363.7 168.8 1342.7 132.4 1363.7 96 1405.7 96z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .header-style {
+            background-color: #3954C7;
+            /*    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='1000' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23429BC5' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%2341D4FF'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+        */
+        }
+
+        .custom-title {
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 1.5em;
+        }
+    </style>
+
+    <title>Estimación precios de vivienda</title>
+
+</head>
+
+<body class="body">
+
+    <nav class="navbar navbar-light header-style shadow-sm">
+        <a class="navbar-brand p-4 text-white custom-title" href="#">
+            <img src="/static/logo.png" width="40" height="40" class="d-inline-block align-bottom" alt="">
+            RealEstate<b>ML</b>
+        </a>
+    </nav>
+
+    <div class="container container-fluid back-style">
+
+        <div class="row p-4">
+
+            <div class="col-md-8 offset-md-2">
+                <h2>Pronóstico de Precios de Vivienda Valle de San Nicolas</h1>
+                    <h3 class="lead">Para continuar por favor ingresa los siguientes datos:</h3><br>
+            </div>
+
+
+            <div class="col-md-6 offset-md-3">
+                <form id="api-form-data">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col">
+                                <label for="tipo_prop">Estado</label>
+                                <select name="tipo_prop" id="tipo_prop" class="form-control">
+                                    <option value="nueva">Usada</option>
+                                    <option value="usada">Nueva</option>
+                                </select>
+                            </div>
+
+                            <div class="col">
+                                <label for="tipo_viv">Ingrese el tipo de propiedad</label>
+                                <select name="tipo_viv" id="tipo_viv" class="form-control">
+                                    <option value="apartamento">Apartamento</option>
+                                    <option value="casa">Casa</option>
+                                    <option value="finca">Finca</option>
+                                    <option value="apartaestudio">Apartaestudio</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="prop_area">Ingrese área en metros cuadrados</label>
+                        <input type="number" class="form-control" name="prop_area" id="prop_area" min="0"
+                            placeholder="Ingrese un valor mayor a cero" />
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="habitaciones">Ingrese número de habitaciones</label>
+                        <input type="number" class="form-control" name="habitaciones" id="habitaciones" min="0"
+                            placeholder="" />
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="banos">Ingrese el número de baños</label>
+                        <input type="number" class="form-control" name="banos" id="banos" min="0" placeholder="" />
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="estrato">Ingrese el estrato</label>
+                        <select name="estrato" id="estrato" class="form-control">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="ubicacion">Ingrese la ubicación</label>
+                        <select name="ubicacion" id="ubicacion" class="form-control">
+                            <option value="rionegro">Rionegro</option>
+                            <option value="llanogrande">Llanogrande</option>
+                            <option value="marinilla">Marinilla</option>
+                            <option value="el retiro">El Retiro</option>
+                            <option value="la ceja">La Ceja</option>
+                            <option value="el carmen de viboral">El Carmén de Viboral</option>
+                            <option value="guarne">Guarne</option>
+                            <option value="san antonio de pereira">San Antonio de Pereira</option>
+                            <option value="santuario">Santuario</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-2 d-grid gap-2">
+                        <button type="submit" id="btn-send" class="btn btn-success btn-lg btn-block">Enviar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#btn-send').on('click', function (e) {
+
+            e.preventDefault();
+
+            let data = {
+                tipo_prop: $('#tipo_prop').val(),
+                tipo_viv: $('#tipo_viv').val(),
+                prop_area: $('#prop_area').val(),
+                habitaciones: $('#habitaciones').val(),
+                banos: $('#banos').val(),
+                estrato: $('#estrato').val(),
+                ubicacion: $('#ubicacion').val()
+            }
+
+            $.ajax({
+                contentType: 'application/json',
+                dataType: 'json',
+                url: "/api",
+                method: 'POST',
+                data: JSON.stringify(data)
+            }).done(function (data) {
+
+                if (data.status == 'OK') {
+
+                    const options = { style: 'currency', currency: 'COP' };
+                    const priceFormated = new Intl.NumberFormat('es-CO', options);
+
+                    Swal.fire(
+                        'Respuesta',
+                        'El precio estimado de la vivienda es de: ' + '<br>' + '<h3>' + priceFormated.format(data.stimated_price) + '<h3>',
+                        'success'
+                    )
+                }
+                console.log(data)
+            }).fail(function (e) {
+
+                console.log(e)
+
+                Swal.fire(
+                    'Respuesta',
+                    'No fue posible calcular el precio, valida los datos ingresados o intenta de nuevo mas tarde.',
+                    'error'
+                )
+
+            });
+
+        })
+    </script>
+
+</body>
