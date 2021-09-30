@@ -93,3 +93,7 @@ async def send_item(item: Item):
 
     json_compatible_item_data = jsonable_encoder({'status':'OK', 'stimated_price':stimated_price.item()})
     return JSONResponse(content=json_compatible_item_data)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
