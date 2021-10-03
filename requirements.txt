@@ -1,11 +1,10 @@
 scikit-learn
 xgboost==0.90
 fastapi
-uvicorn[standard]
+uvicorn
 jinja2
 aiofiles
 pandas
 pydantic
 numpy
 joblib
-gunicorn
