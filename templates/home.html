@@ -5,10 +5,16 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
         crossorigin="anonymous"></script>
 
+
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;1,300&display=swap');
@@ -43,100 +49,252 @@
 
     <nav class="navbar navbar-light header-style shadow-sm">
         <a class="navbar-brand p-4 text-white custom-title" href="#">
-            <img src="/static/logo.png" width="40" height="40" class="d-inline-block align-bottom" alt="">
+            <img src="/static/logo.png" width="30" class="d-inline-block align-bottom" alt="">
             RealEstate<b>ML</b>
         </a>
     </nav>
 
-    <div class="container container-fluid back-style">
+    <div class="container container-fluid back-style w-100">
 
         <div class="row p-4">
 
-            <div class="col-md-8 offset-md-2">
-                <h2>Pronóstico de Precios de Vivienda Valle de San Nicolas</h1>
-                    <h3 class="lead">Para continuar por favor ingresa los siguientes datos:</h3><br>
-            </div>
+            <!-- inicia card-->
+            <div class="shadow rounded mt-4">
+
+                <div class="col-md-8 offset-md-2 p-3 text-center">
+                    <h2>Pronóstico de Precios de Vivienda <br>Valle de San Nicolas</h1>
+                        <h3 class="lead">Para continuar por favor ingresa los siguientes datos:</h3><br>
+                </div>
 
 
-            <div class="col-md-6 offset-md-3">
-                <form id="api-form-data">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col">
-                                <label for="tipo_prop">Estado</label>
-                                <select name="tipo_prop" id="tipo_prop" class="form-control">
-                                    <option value="nueva">Usada</option>
-                                    <option value="usada">Nueva</option>
-                                </select>
-                            </div>
+                <div class="col-md-8 offset-md-2">
+                    <form id="api-form-data">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col">
+                                    <label for="tipo_prop"><b>Estado</b></label>
+                                    <select name="tipo_prop" id="tipo_prop" class="form-control">
+                                        <option value="nueva">Usada</option>
+                                        <option value="usada">Nueva</option>
+                                    </select>
+                                </div>
 
-                            <div class="col">
-                                <label for="tipo_viv">Ingrese el tipo de propiedad</label>
-                                <select name="tipo_viv" id="tipo_viv" class="form-control">
-                                    <option value="apartamento">Apartamento</option>
-                                    <option value="casa">Casa</option>
-                                    <option value="finca">Finca</option>
-                                    <option value="apartaestudio">Apartaestudio</option>
-                                </select>
+                                <div class="col">
+                                    <label for="tipo_viv"><b>Ingrese el tipo de propiedad</b></label>
+                                    <select name="tipo_viv" id="tipo_viv" class="form-control">
+                                        <option value="apartamento">Apartamento</option>
+                                        <option value="casa">Casa</option>
+                                        <option value="finca">Finca</option>
+                                        <option value="apartaestudio">Apartaestudio</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="form-group mt-2">
-                        <label for="prop_area">Ingrese área en metros cuadrados</label>
-                        <input type="number" class="form-control" name="prop_area" id="prop_area" min="0"
-                            placeholder="Ingrese un valor mayor a cero" />
-                    </div>
+                        <div class="row mt-4">
+                            <div class="col">
+                                <div class="form-group mt-2">
+                                    <label for="prop_area"><b>Área en m2</b></label>
+                                    <input type="number" class="form-control" name="prop_area" id="prop_area" min="0"
+                                        placeholder="Ingrese un valor mayor a cero" value=0 />
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mt-2">
+                                    <label for="habitaciones"><b>Número de habitaciones</b></label>
+                                    <input type="number" class="form-control" name="habitaciones" id="habitaciones"
+                                        min="0" placeholder="" value=0 />
+                                </div>
+                            </div>
+                            <div class="col">
 
-                    <div class="form-group mt-2">
-                        <label for="habitaciones">Ingrese número de habitaciones</label>
-                        <input type="number" class="form-control" name="habitaciones" id="habitaciones" min="0"
-                            placeholder="" />
-                    </div>
+                                <div class="form-group mt-2">
+                                    <label for="banos"><b>Número de baños</b></label>
+                                    <input type="number" class="form-control" name="banos" id="banos" min="0" value=0 />
+                                </div>
 
-                    <div class="form-group mt-2">
-                        <label for="banos">Ingrese el número de baños</label>
-                        <input type="number" class="form-control" name="banos" id="banos" min="0" placeholder="" />
-                    </div>
+                            </div>
+                        </div>
 
-                    <div class="form-group mt-2">
-                        <label for="estrato">Ingrese el estrato</label>
-                        <select name="estrato" id="estrato" class="form-control">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                        </select>
-                    </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group mt-4">
+                                    <label for="estrato"><b>Estrato</b></label>
+                                    <select name="estrato" id="estrato" class="form-control">
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mt-4">
+                                    <label for="ubicacion"><b>Ubicación</b></label>
+                                    <select name="ubicacion" id="ubicacion" class="form-control">
+                                        <option value="rionegro">Rionegro</option>
+                                        <option value="llanogrande">Llanogrande</option>
+                                        <option value="marinilla">Marinilla</option>
+                                        <option value="el retiro">El Retiro</option>
+                                        <option value="la ceja">La Ceja</option>
+                                        <option value="el carmen de viboral">El Carmén de Viboral</option>
+                                        <option value="guarne">Guarne</option>
+                                        <option value="san antonio de pereira">San Antonio de Pereira</option>
+                                        <option value="santuario">Santuario</option>
+                                    </select>
+                                </div>
 
-                    <div class="form-group mt-2">
-                        <label for="ubicacion">Ingrese la ubicación</label>
-                        <select name="ubicacion" id="ubicacion" class="form-control">
-                            <option value="rionegro">Rionegro</option>
-                            <option value="llanogrande">Llanogrande</option>
-                            <option value="marinilla">Marinilla</option>
-                            <option value="el retiro">El Retiro</option>
-                            <option value="la ceja">La Ceja</option>
-                            <option value="el carmen de viboral">El Carmén de Viboral</option>
-                            <option value="guarne">Guarne</option>
-                            <option value="san antonio de pereira">San Antonio de Pereira</option>
-                            <option value="santuario">Santuario</option>
-                        </select>
-                    </div>
+                            </div>
+                        </div>
 
-                    <div class="form-group mt-2 d-grid gap-2">
-                        <button type="submit" id="btn-send" class="btn btn-success btn-lg btn-block">Enviar</button>
-                    </div>
+                        <div class="form-group mt-4 text-center">
+                            <span>¿Desean obtener un mejor resultado al ingresar algunos datos adicionales?</span>
 
-                </form>
+                            <input type="checkbox" data-toggle="toggle" data-on="SI" data-off="NO"
+                                data-onstyle="success" data-offstyle="danger" id="btn-adit-data">
+
+                        </div>
+
+                        <div class="row aditional-data d-none">
+                            <div class="row">
+
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="garajes"><b>Número de garanjes</b></label>
+                                        <input type="number" class="form-control" name="garajes" id="garajes" min="0"
+                                            placeholder="" value=0 />
+                                    </div>
+
+                                </div>
+
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="antiguedad"><b>Antiguedad Vivienda</b></label>
+                                        <select name="antiguedad" id="antiguedad" class="form-control">
+                                            <option value="0">Nueva</option>
+                                            <option value="Menos de 1 aÃ±o">Menos de 1 año</option>
+                                            <option value="1 a 8 aÃ±os">1 a 8 años</option>
+                                            <option value="9 a 15 aÃ±os">9 a 15 años</option>
+                                            <option value="16 a 30 aÃ±os">16 a 30 años</option>
+                                            <option value="MÃ¡s de 30 aÃ±os">Más de 30 años</option>
+                                        </select>
+                                        <br><br>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="btn-balcon">Balcón</label>
+                                        <input type="checkbox" data-toggle="toggle" data-on="SI" data-off="NO"
+                                            data-onstyle="success" data-offstyle="danger" id="btn-balcon" name="balcon">
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="btn-zverdes">Zonas verdes</label>
+                                        <input type="checkbox" data-toggle="toggle" data-on="SI" data-off="NO"
+                                            data-onstyle="success" data-offstyle="danger" id="btn-zverdes"
+                                            name="zverdes">
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="conjunto">Conjunto cerrado</label>
+                                        <input type="checkbox" data-toggle="toggle" data-on="SI" data-off="NO"
+                                            data-onstyle="success" data-offstyle="danger" id="btn-conjunto"
+                                            name="conjunto">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br><br>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group mt-2">
+                                        <label for="btn-zinfantil">Zonas infantiles</label>
+                                        <input type="checkbox" data-toggle="toggle" data-on="SI" data-off="NO"
+                                            data-onstyle="success" data-offstyle="danger" id="btn-zinfantil"
+                                            name="zinfantil">
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="form-group mt-2">
+                                        <label for="comercial">Centros comerciales</label>
+                                        <input type="checkbox" data-toggle="toggle" data-on="SI" data-off="NO"
+                                            data-onstyle="success" data-offstyle="danger" id="btn-comercial"
+                                            name="comercial">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group mt-2">
+                                        <label for="transporte">Transporte público</label>
+                                        <input type="checkbox" data-toggle="toggle" data-on="SI" data-off="NO"
+                                            data-onstyle="success" data-offstyle="danger" id="btn-transporte"
+                                            name="transporte">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <br><br>
+
+                        <div class="form-group mt-2 d-grid gap-2 col-md-4 offset-md-4">
+                            <button type="submit" id="btn-send" class="btn btn-success btn-lg btn-block">
+                                <span><img src="/static/send_icon.png" alt="Send icon" width="40px"></span>&nbsp; &nbsp;
+                                Enviar datos</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- cierra card-->
+            </div>
+
+        </div>
+
+        <div class="row p-4">
+            <div class="shadow rounded mt-4">
+                <div class="col-md-10 offset-md-1">
+                    <h3 class="m-2 p-2">Resultados</h3>
+                    <table class="table table-striped text-center" id="table-prices">
+                        <caption>Resultados del pronóstico de precios</caption>
+                        <thead>
+                            <th id="th1">Ubicación</th>
+                            <th id="th2">Área</th>
+                            <th id="th3">Estrato</th>
+                            <th id="th4"># Habitaciones</th>
+                            <th id="th5">Precio Estimado</th>
+                        </thead>
+                        <tbody id="tbl-prices-body">
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+
     </div>
 
     <script>
+
+
+        $('#btn-adit-data').on('change', function (e) {
+
+            e.preventDefault();
+            $('.aditional-data').toggleClass('d-none')
+
+        })
+
+
         $('#btn-send').on('click', function (e) {
 
             e.preventDefault();
@@ -148,7 +306,16 @@
                 habitaciones: $('#habitaciones').val(),
                 banos: $('#banos').val(),
                 estrato: $('#estrato').val(),
-                ubicacion: $('#ubicacion').val()
+                ubicacion: $('#ubicacion').val(),
+                garajes: $('#garajes').val(),
+                antiguedad: $('#antiguedad').val(),
+                balcon: $('#btn-balcon').prop('checked') ? 1 : 0,
+                zverdes: $('#btn-zverdes').prop('checked') ? 1 : 0,
+                conjunto: $('#btn-conjunto').prop('checked') ? 1 : 0,
+                zinfantil: $('#btn-zinfantil').prop('checked') ? 1 : 0,
+                comercial: $('#btn-comercial').prop('checked') ? 1 : 0,
+                transporte: $('#btn-transporte').prop('checked') ? 1 : 0,
+                other_data: $('#btn-adit-data').prop('checked') ? 1 : 0,
             }
 
             $.ajax({
@@ -169,6 +336,15 @@
                         'El precio estimado de la vivienda es de: ' + '<br>' + '<h3>' + priceFormated.format(data.stimated_price) + '<h3>',
                         'success'
                     )
+
+                    $('#tbl-prices-body').append(`<tr>
+                        <td>${$('#ubicacion').val()}</td>
+                        <td>${$('#prop_area').val()}</td>
+                        <td>${$('#estrato').val()}</td>
+                        <td>${$('#habitaciones').val()}</td>
+                        <td>${priceFormated.format(data.stimated_price)}</td>
+                        </tr>`);
+
                 }
                 console.log(data)
             }).fail(function (e) {
